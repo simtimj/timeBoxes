@@ -120,7 +120,7 @@ class App extends React.Component {
   render () {
     return (
     <div className='mainCont'>
-      <h1>Timers!?</h1>
+      <h1>Timer Boxes</h1>
       <input type='button' value='Make Stopwatch' onClick={() => { this.addTimer() } }></input>
       <input type='button' value='Save Stopwatches' onClick={() => { this.saveTimers() } }></input>
       <input type='button' value='Delete all Stopwatches' onClick={() => { this.deleteAll() } }></input>
