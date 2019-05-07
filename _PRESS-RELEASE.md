@@ -18,29 +18,46 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-  Placeholder: Time Management / Tracker / Timer
-
+  Placeholder: Time Boxes
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  For people that want to keep track of how much time they spend.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  This product let's you create multiple stopwatches that are able to be saved at the same time at the moment you save them. 
+  Useful for monitoring the amount of time you put into certain tasks.
 
 ## Problem ##
   > Describe the problem your product solves.
+  In this hectic and chaotic life, we're constantly multi-tasking to save us time. Yet, if you want to keep track of it all 
+  accurately, one timer just won't cut it.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  With it's simple, lightweight, minimalistic design, the product allows the user to create and save multiple timers at once,
+  and have them all concisely placed together so it'll only take a glance to know how long it's been since you started any of your timers.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  'Don't let your dreams be dreams. Yesterday you said tomorrow, so just do it.' -Sebastion Ward
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  You just create as many timers as you need, and click start.
+  If you want to stop one, simply click the stop button.
+  And if you want to empty them all out and start from fresh,
+  click the delete all button to start from a fresh slate.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  'I spend many hours in front of a computer monitor, and I've been neglecting taking breaks and resting my eyes.
+  With this product I can see how much time it's been since I've last taken a break, another timer is set and resetted
+  more frequently for resting my eyes, and the last one shows me how much time I've been focusing on the task at hand.
+  The product has made it a lot easier to keep track of all of these types of things.'
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  I hope you enjoy the product, and if there are any suggestions on how to make it even better,
+  please email me at juliussimtim@gmail.com.
