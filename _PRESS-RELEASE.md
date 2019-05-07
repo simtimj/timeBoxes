@@ -26,12 +26,12 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-  This product let's you create multiple stopwatches that are able to be saved at the same time at the moment you save them. 
+  This product let's you create multiple stopwatches that are able to be saved and resumed. 
   Useful for monitoring the amount of time you put into certain tasks.
 
 ## Problem ##
   > Describe the problem your product solves.
-  In this hectic and chaotic life, we're constantly multi-tasking to save us time. Yet, if you want to keep track of it all 
+  In this hectic and chaotic life, we're constantly multi-tasking to get things done. Yet, if you want to keep track of it all 
   accurately, one timer just won't cut it.
 
 ## Solution ##
