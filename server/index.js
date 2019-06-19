@@ -52,6 +52,6 @@ app.delete('/api/timers', (req, res) => {
 // })
 
 
-app.listen(3000, function() {
-  console.log('listening on localhost:3000');
+app.listen(3333, function() {
+  console.log('listening on localhost:3333');
 });
