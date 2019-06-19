@@ -113,9 +113,7 @@ class TimerEntry extends React.Component {
   render() {
     return (
       <div id='timerEntry'>
-
-        {/* Combine button functions to have Start/Stop button. */}
-        {/* Add option to show or not show milliseconds */}
+        
         {/* Start Button */}
         <input type='button' value='Start' onClick={ () => { this.startTimer(this.props.timer.time, this.props.timer.position) } }></input>
 

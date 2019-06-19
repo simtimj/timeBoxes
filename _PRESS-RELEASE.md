@@ -61,3 +61,13 @@ Once the project moves into development, the press release can be used as a touc
   > Wrap it up and give pointers where the reader should go next.
   I hope you enjoy the product, and if there are any suggestions on how to make it even better,
   please email me at juliussimtim@gmail.com.
+
+
+## Will add
+  > Combine button functions to have Start/Stop button.
+  > Add option to show or not show milliseconds.
+  > Show running "optimal rate" timer on right side.
+  > Will be able to show how much time was put into specific timer. 
+  > Categorize and show totals later. Totally customizable order and grouping. 
+  > Add reduce time option. +5,10,15,20,etc... mins can put custom.
+  > Change browser icon in tab.
