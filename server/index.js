@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.get('/api/timers', function (req, res) {
   Timer.find({}, (err, timers) => {
     if (err) { return err; }
-    console.log('get endpoint successful', timers);
+    console.log('Successful db read', timers);
     res.send(timers);
   })
 });
@@ -27,7 +27,7 @@ app.post('/api/timers', function (req, res) {
   var timers = req.body.timers;
   Timer.collection.insert(timers, function (err) {
     if (err) { console.log(err) };
-    console.log("Multiple documents successfully saved");
+    console.log("Timers successfully saved");
   });
 })
 

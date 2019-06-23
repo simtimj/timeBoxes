@@ -20,6 +20,7 @@ class TimerList extends React.Component {
           handleTimeChange={this.props.handleTimeChange} 
           deleteTimer={this.props.deleteTimer}
           class='timeBox' 
+          saveTimers={this.props.saveTimers}
           timer={timer} />
         )}
       </div>

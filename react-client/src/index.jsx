@@ -11,6 +11,7 @@ class App extends React.Component {
     }
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.addTimer = this.addTimer.bind(this);
+    this.saveTimers = this.saveTimers.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,7 @@ class App extends React.Component {
   }
 
   saveTimers() {
+    console.log("saved!")
     $.ajax({
       type:'DELETE',
       url:'/api/timers',
@@ -128,6 +130,7 @@ class App extends React.Component {
       handleTimeChange={this.handleTimeChange} 
       timers={this.state.timers}
       deleteTimer={this.deleteTimer}
+      saveTimers={this.saveTimers}
       />
     </div>)
   }

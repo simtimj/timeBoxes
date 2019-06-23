@@ -7,8 +7,9 @@ class TimerEntry extends React.Component {
     this.state = {
       name: '',
       tickingFunc: '',
+      startOrStop: 'Start',
     }
-    this.startTimer = this.startTimer.bind(this);
+    this.stopStartTimer = this.stopStartTimer.bind(this);
     this.lessThanTenCheck = this.lessThanTenCheck.bind(this);
     this.stringToSeconds = this.stringToSeconds.bind(this);
     this.secondsToString = this.secondsToString.bind(this);
@@ -51,59 +52,63 @@ class TimerEntry extends React.Component {
     return `${this.lessThanTenCheck(hours)}:${this.lessThanTenCheck(minutes)}:${this.lessThanTenCheck(seconds)}`;
   }
 
-  startTimer(currentString, position) {
+
+
+  stopStartTimer(currentString, position) {
     // convert time string to seconds
-    var timeInInt = this.stringToSeconds(currentString) + 1;
-    // console.log('Check convertion from timeInt to timeString', this.secondsToString(secondsInt));
-    // use setInterval to add 1 per second
-    var that = this
-    this.setState({
-      tickingFunc: setInterval(function () {
-        // console.log('seconds in int', timeInInt);
-  
-        var lessThanTenCheck = (num) => {
-          if (num < 10) {
-            return '0' + num; 
+    if (this.state.startOrStop === "Stop") {
+      this.setState({
+        startOrStop: "Start"
+      })
+      clearInterval(this.state.tickingFunc);
+    } else {
+      this.setState({
+        startOrStop: "Stop"
+      })
+      var timeInInt = this.stringToSeconds(currentString) + 1;
+      // console.log('Check convertion from timeInt to timeString', this.secondsToString(secondsInt));
+      // use setInterval to add 1 per second
+      var that = this;
+      this.setState({
+        tickingFunc: setInterval(function () {
+          // console.log('seconds in int', timeInInt);
+    
+          var lessThanTenCheck = (num) => {
+            if (num < 10) {
+              return '0' + num; 
+            }
+            return num.toString();
           }
-          return num.toString();
-        }
-  
-        var secondsToString = (secs) => {   
-          var hours = 0;
-          var minutes = 0; 
-          var seconds = 0;   
-          if (secs > 3600) {
-            hours = Math.floor(secs / 3600);
-            secs -= hours * 3600;
+    
+          var secondsToString = (secs) => {   
+            var hours = 0;
+            var minutes = 0; 
+            var seconds = 0;   
+            if (secs > 3600) {
+              hours = Math.floor(secs / 3600);
+              secs -= hours * 3600;
+            }
+            if (secs > 60) {
+              minutes = Math.floor(secs / 60);
+              secs -= minutes * 60;
+            }
+            seconds = secs;
+          
+            return `${lessThanTenCheck(hours)}:${lessThanTenCheck(minutes)}:${lessThanTenCheck(seconds)}`;
           }
-          if (secs > 60) {
-            minutes = Math.floor(secs / 60);
-            secs -= minutes * 60;
-          }
-          seconds = secs;
-        
-          return `${lessThanTenCheck(hours)}:${lessThanTenCheck(minutes)}:${lessThanTenCheck(seconds)}`;
-        }
-        var newTime = secondsToString(timeInInt);
-        // console.log('check newTime: ', newTime);
-        // console.log('check position: ', position);
-        that.props.handleTimeChange(newTime, position);
-  
-        timeInInt++;
-      }, 1000)
-    }) 
-    // set state to new time.
+          var newTime = secondsToString(timeInInt);
+          // console.log('check newTime: ', newTime);
+          // console.log('check position: ', position);
+          that.props.handleTimeChange(newTime, position);
+          that.props.saveTimers();
+          timeInInt++;
+        }, 1000)
+      }) 
+    }
   }
 
-  // keyPressHandler(e) {
-  //   var s = e.target.value;
-  //   this.setState({
-  //     name: s,
-  //   })
-  // }
-
-  stopTimer(setIntervalName) {
-    clearInterval(this.state.tickingFunc);
+  resetTimer() {
+    
   }
 
   deleteTimer(position) {
@@ -115,10 +120,10 @@ class TimerEntry extends React.Component {
       <div id='timerEntry'>
         
         {/* Start Button */}
-        <input type='button' value='Start' onClick={ () => { this.startTimer(this.props.timer.time, this.props.timer.position) } }></input>
+        <input type='button' value={this.state.startOrStop} onClick={ () => { this.stopStartTimer(this.props.timer.time, this.props.timer.position) } }></input>
 
         {/* Stop Button */}
-        <input type='button' value='Stop' onClick={ () => {this.stopTimer()}}></input>
+        <input type='button' value='Reset' onClick={this.resetTimer}></input>
 
         {/* Reset Button
         <input type='button' value='Reset'></input> */}

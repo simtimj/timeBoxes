@@ -1,5 +1,5 @@
 {
-  "name": "github-fetcher-fullstack-v2",
+  "name": "time-boxes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,7 @@
     "start": "nodemon server/index.js",
     "build": "webpack -d --watch"
   },
-  "author": "Beth Johnson",
-  "license": "ISC",
+  "author": "Julius Simtim",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
