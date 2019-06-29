@@ -49,6 +49,7 @@ class App extends React.Component {
     // // passed an updated timer
     var newTimer = this.state.timers[position];
     newTimer.time = updatedTime;
+    console.log(newTimer);
 
     var newTimers= this.state.timers;
     newTimers[position] = newTimer;

@@ -107,8 +107,8 @@ class TimerEntry extends React.Component {
     }
   }
 
-  resetTimer() {
-    
+  resetTimer(position) {
+    this.props.handleTimeChange('00:00:00', position)
   }
 
   deleteTimer(position) {
@@ -122,11 +122,8 @@ class TimerEntry extends React.Component {
         {/* Start Button */}
         <input type='button' value={this.state.startOrStop} onClick={ () => { this.stopStartTimer(this.props.timer.time, this.props.timer.position) } }></input>
 
-        {/* Stop Button */}
-        <input type='button' value='Reset' onClick={this.resetTimer}></input>
-
-        {/* Reset Button
-        <input type='button' value='Reset'></input> */}
+        {/* Reset Button */}
+        <input type='button' value='Reset' onClick={() => {this.resetTimer(this.props.timer.position)} }></input>
 
         {/* Name Box */}
         <input type='text' placeholder={this.props.timer.name}></input> 
