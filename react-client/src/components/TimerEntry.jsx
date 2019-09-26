@@ -57,18 +57,21 @@ class TimerEntry extends React.Component {
   stopStartTimer(currentString, position) {
     // convert time string to seconds
     if (this.state.startOrStop === "Stop") {
+
       this.setState({
         startOrStop: "Start"
       })
       clearInterval(this.state.tickingFunc);
+
     } else {
+
       this.setState({
         startOrStop: "Stop"
       })
+
       var timeInInt = this.stringToSeconds(currentString) + 1;
-      // console.log('Check convertion from timeInt to timeString', this.secondsToString(secondsInt));
-      // use setInterval to add 1 per second
       var that = this;
+
       this.setState({
         tickingFunc: setInterval(function () {
           // console.log('seconds in int', timeInInt);
@@ -97,10 +100,9 @@ class TimerEntry extends React.Component {
             return `${lessThanTenCheck(hours)}:${lessThanTenCheck(minutes)}:${lessThanTenCheck(seconds)}`;
           }
           var newTime = secondsToString(timeInInt);
-          // console.log('check newTime: ', newTime);
-          // console.log('check position: ', position);
+
           that.props.handleTimeChange(newTime, position);
-          that.props.saveTimers();
+          // that.props.saveTimers();
           timeInInt++;
         }, 1000)
       }) 

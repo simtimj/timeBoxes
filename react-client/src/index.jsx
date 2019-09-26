@@ -2,6 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import TimerList from './components/TimerList.jsx';
+import * as firebase from 'firebase';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD0YD4fRv2miE3HTUyJ8OUH7xInqlapumk",
+  authDomain: "time-boxes.firebaseapp.com",
+  databaseURL: "https://time-boxes.firebaseio.com",
+  projectId: "time-boxes",
+  storageBucket: "",
+  messagingSenderId: "788235968609",
+  appId: "1:788235968609:web:006612afe24091120aca20"
+};
+firebase.initializeApp(firebaseConfig);
 
 class App extends React.Component {
   constructor(props) {
@@ -15,15 +28,32 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax ({
-      type: 'GET',
-      url: '/api/timers',
-      success: (data) => {
-        console.log('successful get request')
-        this.setState({
-          timers: data
-        })
-      }
+    // $.ajax ({
+    //   type: 'GET',
+    //   url: '/api/timers',
+    //   success: (data) => {
+    //     console.log('successful get request')
+    //     this.setState({
+    //       timers: data
+    //     })
+    //   }
+    // })
+
+    // recieve timer from firebase
+    const rootRef = firebase.database().ref();
+    
+    rootRef.on('value', snap => {
+      let timers = [];
+
+      snap.forEach((timer) => {
+        var timerData = timer.val();
+        timers.push(timerData);
+      })
+      console.log(timers);
+
+      this.setState({
+        timers
+      })
     })
   }
 
@@ -39,21 +69,26 @@ class App extends React.Component {
         console.log('error');
       }
     })
-    $.post('/api/timers', {timers: this.state.timers}, (err) => {
-      if (err) {console.log(err)}
-      console.log('Post successful', this.state.timers);
-    });
+    // $.post('/api/timers', {timers: this.state.timers}, (err) => {
+    //   if (err) {console.log(err)}
+    //   console.log('Post successful', this.state.timers);
+    // });
   }
 
   handleTimeChange(updatedTime, position) {
     // // passed an updated timer
     var newTimer = this.state.timers[position];
     newTimer.time = updatedTime;
-    console.log(newTimer);
 
     var newTimers= this.state.timers;
     newTimers[position] = newTimer;
-    // console.log('Updated timers: ', newTimers);
+
+    // update firebase 
+    let firebaseRoot = firebase.database().ref();
+    firebaseRoot.child(newTimer.name).set(newTimer);
+
+
+    // change state
     this.setState({
       timers: newTimers
     })
@@ -65,12 +100,16 @@ class App extends React.Component {
       time: '00:00:00', 
       position: this.state.timers.length
     }
-    var newTimers = this.state.timers;
-    newTimers.push(newTimer);
+    // var newTimers = this.state.timers;
+    // newTimers.push(newTimer);
 
-    this.setState({
-      timers: newTimers
-    })
+    // firebase add timer
+    let firebaseRoot = firebase.database().ref();
+    firebaseRoot.child(newTimer.name).set(newTimer);
+
+    // this.setState({
+    //   timers: newTimers
+    // })
 
   }
 
@@ -104,20 +143,26 @@ class App extends React.Component {
   // }
 
   deleteAll() {
-    this.setState({
-      timers: []
-    })
+    // this.setState({
+    //   timers: []
+    // })
 
-    $.ajax({
-      type:'DELETE',
-      url:'/api/timers',
-      success : function(data) {
-        console.log('success');
-        },
-      error : function() {
-        console.log('error');
-      }
-    })
+    // $.ajax({
+    //   type:'DELETE',
+    //   url:'/api/timers',
+    //   success : function(data) {
+    //     console.log('success');
+    //     },
+    //   error : function() {
+    //     console.log('error');
+    //   }
+    // })
+
+    // delete all stopwatches in firebase
+
+    let firebaseRef = firebase.database().ref();
+    firebaseRef.remove();
+    
   }
 
   render () {
@@ -136,5 +181,6 @@ class App extends React.Component {
     </div>)
   }
 }
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
