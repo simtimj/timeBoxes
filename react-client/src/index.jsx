@@ -28,18 +28,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // $.ajax ({
-    //   type: 'GET',
-    //   url: '/api/timers',
-    //   success: (data) => {
-    //     console.log('successful get request')
-    //     this.setState({
-    //       timers: data
-    //     })
-    //   }
-    // })
-
-    // recieve timer from firebase
     const rootRef = firebase.database().ref();
     
     rootRef.on('value', snap => {
@@ -69,10 +57,6 @@ class App extends React.Component {
         console.log('error');
       }
     })
-    // $.post('/api/timers', {timers: this.state.timers}, (err) => {
-    //   if (err) {console.log(err)}
-    //   console.log('Post successful', this.state.timers);
-    // });
   }
 
   handleTimeChange(updatedTime, position) {
@@ -100,17 +84,10 @@ class App extends React.Component {
       time: '00:00:00', 
       position: this.state.timers.length
     }
-    // var newTimers = this.state.timers;
-    // newTimers.push(newTimer);
 
     // firebase add timer
     let firebaseRoot = firebase.database().ref();
     firebaseRoot.child(newTimer.name).set(newTimer);
-
-    // this.setState({
-    //   timers: newTimers
-    // })
-
   }
 
   changeName(e) {
@@ -143,20 +120,6 @@ class App extends React.Component {
   // }
 
   deleteAll() {
-    // this.setState({
-    //   timers: []
-    // })
-
-    // $.ajax({
-    //   type:'DELETE',
-    //   url:'/api/timers',
-    //   success : function(data) {
-    //     console.log('success');
-    //     },
-    //   error : function() {
-    //     console.log('error');
-    //   }
-    // })
 
     // delete all stopwatches in firebase
 
