@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import TimerList from './components/TimerList.jsx';
 import * as firebase from 'firebase';
-import test from '../../config.js'
-
+import firebaseAPI from '../../config.js'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD0YD4fRv2miE3HTUyJ8OUH7xInqlapumk",
+  apiKey: firebaseAPI,
   authDomain: "time-boxes.firebaseapp.com",
   databaseURL: "https://time-boxes.firebaseio.com",
   projectId: "time-boxes",
@@ -122,7 +121,6 @@ class App extends React.Component {
   deleteAll() {
 
     // delete all stopwatches in firebase
-
     let firebaseRef = firebase.database().ref();
     firebaseRef.remove();
     
@@ -132,7 +130,6 @@ class App extends React.Component {
     return (
     <div className='mainCont'>
       <h1>Time Boxes</h1>
-      <h2>{test}</h2>
       <input type='button' value='Make Stopwatch' onClick={() => { this.addTimer() } }></input>
       <input type='button' value='Save Stopwatches' onClick={() => { this.saveTimers() } }></input>
       <input type='button' value='Delete all Stopwatches' onClick={() => { this.deleteAll() } }></input>
