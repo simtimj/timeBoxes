@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import TimerList from './components/TimerList.jsx';
 import * as firebase from 'firebase';
+import test from '../../config.js'
 
 
 const firebaseConfig = {
@@ -37,7 +38,6 @@ class App extends React.Component {
         var timerData = timer.val();
         timers.push(timerData);
       })
-      console.log(timers);
 
       this.setState({
         timers
@@ -132,6 +132,7 @@ class App extends React.Component {
     return (
     <div className='mainCont'>
       <h1>Time Boxes</h1>
+      <h2>{test}</h2>
       <input type='button' value='Make Stopwatch' onClick={() => { this.addTimer() } }></input>
       <input type='button' value='Save Stopwatches' onClick={() => { this.saveTimers() } }></input>
       <input type='button' value='Delete all Stopwatches' onClick={() => { this.deleteAll() } }></input>
