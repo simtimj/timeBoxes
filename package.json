@@ -22,7 +22,7 @@
     "firebase": "^7.0.0",
     "flipclock": "^0.10.5",
     "jquery": "^3.1.1",
-    "mongoose": "^4.8.6",
+    "mongoose": "^4.13.21",
     "mysql": "^2.13.0",
     "nodemon": "^1.19.0",
     "react": "^15.4.2",
